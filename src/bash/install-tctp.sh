@@ -48,4 +48,10 @@ gem install i18n
 bundle install
 
 echo "Tresor successfully installed" >> /tmp/wp4-tctp.log 2>&1
+type ss-get > /dev/null  2>&1
+if [ $? -eq 0 ] ; then
+	TCTP_PORT=$(ss-get tctp-server-port)
+	echo "TCTP server port = $TCTP_PORT" >> /tmp/wp4-tctp.log 2>&1
+fi
+
 
